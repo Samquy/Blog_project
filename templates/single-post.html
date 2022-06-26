@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+      <div class="container main">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="single-post">
+              <h1> <span class="blue-frame">{{post.Post_name}}</span></h1>
+              <div class="post-meta text-muted">
+                <span><i class="far fa-user"></i> {{ post.Author }}</span><span><img style="width: 20px;" src="{% static 'img/icon/calendar.svg' %}" alt=""> {{post.Created}}</span><span><i class="far fa-comment-alt"></i> 0 comments</span>
+              </div>
+              <div class="post-contant">
+                <div class="post-img"><img src="{{ post.Thumbnail.url }}" alt=""></div>
+                <h3>{{ post.Overview }}</h3>
+                <p>{{ post.Content | safe }} </p>
+                <h6>Lorem ipsum dolor sit, amet consectetur adipisicing:</h6>
+                <ul class="list-in-text">
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                </ul>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit laudantium, labore inventore fugiat doloremque ab soluta at. Ex, corporis? Necessitatibus distinctio quam sed unde soluta delectus facilis, corporis iusto. Nihil modi eveniet laudantium quisquam a expedita est inventore doloremque, ad officiis odit earum alias asperiores. Nihil accusamus rerum delectus cumque ducimus illum temporibus ratione dolores quibusdam sint facere provident aperiam quis dignissimos reiciendis sed iure quidem eos quasi, nesciunt, ipsum voluptatem at debitis odio. Doloribus explicabo dignissimos nemo rerum sunt amet aspernatur distinctio, deleniti blanditiis cumque soluta officiis suscipit. Minima nesciunt dicta magnam aliquid inventore voluptates laudantium quaerat aperiam in.</p>
+                <figure class="quote text-start">
+                  <blockquote class="blockquote">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                  </figcaption>
+                </figure>
+
+                <div class="share">
+                  <a class="blue-btn" href=""><i class="fab fa-facebook-f"></i> FACEBOOK</a>
+                  <a  class="main-btn" href=""> <i class="fab fa-google-plus-g"></i> GOOGLE+</a>
+                  <a  class="blue-btn" href=""><i class="fab fa-linkedin-in"></i> LINKEDIN</a>
+                  <a  class="main-btn" href=""><i class="fab fa-pinterest-p"></i> PINTEREST</a>
+                </div>
+                {% for com in post.get_comments %}
+                  <p>{{com.content}}</p>
+
+                {% endfor %}
+<!--
+                <div class="navigation">
+                  <a class="prew"><i class="fas fa-chevron-left"></i> PREVIOUS</a>
+                  <a class="next">NEXT <i class="fas fa-chevron-right"></i></a>
+                </div>
+-->
+                <div class="line"></div>
+  
+                <form id="commentForm" method="POST" action="">
+  
+                  <!-- Message input -->
+                  <div class="mb-3">
+                    {% csrf_token %}
+                      {{ form }}
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Comment is required.</div>
+                  </div>
+                  <div class="d-grid">
+<!--
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+-->
+                    <input class="main-btn" id="submitButton" type="submit"  value="Post Comment"/>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+          <div class="sidebar col-lg-4">
+
+            <div class="sidebar-category">
+              <h4>We take care of your business</h4>
+              <div class="category">
+                {% for top in topic %}
+                <div class="category-item">
+                  <img class="category-icon" src="{% static 'img/icon/analytics.svg' %}" alt="">
+                  <h6 class="category-title">{{top.Name}}</h6>
+                  <p>Lorem Ipsum is simply dummy text of the printing </p>
+                  <a href=""><img style="width: 20px;" src="{% static 'img/icon/arrow-right-icon.svg' %}" alt=""></a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container main">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter Username" />
+
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter Password" />
+
+        <input type="submit" value="Login" />
+    </form>
+
+    <p>havent signed up yet?</p>
+    <a href="">Sign up</a>
+</div>
+{% endblock content %}

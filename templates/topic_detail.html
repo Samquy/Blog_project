@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container main">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="all-posts">
+          {% for posts in post %}
+            <div class="post-item">
+              <div class="post-img"><img src="{{ posts.Thumbnail.url }}" alt=""></div>
+              <div class="post-main-info">
+                <h4> {{ posts.Post_name }} </h4>
+                <div class="post-meta text-muted">
+                  <span><i class="far fa-user"></i> {{ posts.Author }}</span>
+                    <span><img style="width: 20px;" src="{% static 'img/icon/calendar.svg' %}" alt=""> {{posts.Created|timesince}}</span>
+                    <span><i class="far fa-comment-alt"></i> 0 comments</span>
+                </div>
+                <p>{{ posts.Overview }}</p>
+                <a href="{{ posts.get_absolute_url }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Read More</a>
+                <a href="{{ posts.get_update_url }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Edit</a>
+                <a href="{{ posts.get_delete_url }}" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Delete</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <main>
+      <div class="container">
+         <!-- Intro -->
+        <div class="intro text-center">
+          <h1>Business Goal Achived with <br> <span class="blue-frame">Creative</span> Teams.</h1>
+          <p class="front-page">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been <br>
+            the industry's standard dummy text ever since the 1500s.</p>
+            <a href="" class="main-btn">How we work</a>
+            <a href="" class="blue-btn">Portfolio</a>
+          <img src="{% static 'img/intro.png' %}" alt="">
+        </div>
+
+        <!-- Clients -->
+        <div class="clients text-center">
+          <p class="text-muted text-uppercase pb-4">Some of our trusted clients</p>
+          <div class="client-logo">
+            <div><img src="{% static 'img/icon/go-sm-logo.svg' %}" alt=""></div>
+            <div><img src="{% static 'img/icon/social-road-logo.svg' %}" alt=""></div>
+            <div><img src="{% static 'img/icon/firmbee-logo.svg' %}" alt=""></div>
+            <div><img src="{% static 'img/icon/create-paper.svg' %}" alt=""></div>
+            <div><img src="{% static 'img/icon/point-design-logo.svg' %}" alt=""></div>
+          </div>
+        </div>
+
+        <!-- Category -->
+
+         <div class="category-wrapper">
+          <div class="left">
+            <img src="{% static 'img/hand.png' %}" alt="">
+          </div>
+
+          <div class="right">
+            <h1>We take <span class="blue-frame">care</span><br>of your business</h1>
+
+              <div class="category">
+                {% for posts in post %}
+                  {% for top in posts.Topic_post.all %}
+                    <div class="category-item">
+                    <img class="category-icon" src=" {% static 'img/icon/analytics.svg' %}" alt="">
+                    <h3 class="category-title">{{ top.Name }}</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing </p>
+                    <a href="{% url 'topic_detail' top.pk %}"><img style="width: 20px;" src="{% static 'img/icon/arrow-right-icon.svg' %}" alt=""></a>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+
+            </div>
+        </div>
+
+
+        <!-- Problems -->
+        <div class="problems">
+          <h1>How we solve our clients<br><span class="blue-frame">Products</span> Problem</h1>
+          <div id="variations" class="variations">
+            <div class="first-variation">
+              <div class="img">
+                <img src="{% static 'img/woomen.png' %}" alt="">
+              </div>
+              <div class="text">
+                <h1>There are many variations</h1>
+                <p class="front-page">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                  <a href="" class="main-btn">Read More</a>
+              </div>
+            </div>
+            <div class="second-variation">
+              <div class="text">
+                <h1>What Customers  Get form Us</h1>
+                <p class="front-page">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                <a href="" class="main-btn">Read More</a>
+              </div>
+              <div class="img">
+                <img src="{% static 'img/man-calendar.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Latest Articles -->
+        <div class="latest-articles text-center">
+          <h1>Our latest <span class="blue-frame">Articles</span></h1>
+          <a href="">All category <img style="width: 20px; margin-left: 20px;" src=" {% static 'img/icon/arrow-right-icon.svg' %}" alt=""></a>
+          <div class="latest-articles-wrapper">
+            {% for items in post %}
+              <div class="article">
+                <img src="{% static 'img/post-1.png' %}" alt="">
+                <p class="article-meta"><img src=" {% static 'img/icon/calendar.svg' %}" alt=""><span class="data text-muted">{{items.Created|timesince}}</span></p>
+                <a href="items.get_absolute_url"><h4 class="title">{{items.post_name}}</h4></a>
+                <p>{{ items.Overview }}</p>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock content %}
+
+
+

@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-w+h1m8_#ed#nh%tm5cm(ryzchqd_m^lls2dwt@z*eefhbxd61p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', slbaoquy.pythonanywhere.com]
 
 # Application definition
 
@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogproject',
-        'USER': 'root',
-        'PASSWORD': '12345',
-        'HOST': '127.0.0.1',
+        'NAME': 'slbaoquy$sam',
+        'USER': 'slbaoquy',
+        'PASSWORD': 'thearmy125',
+        'HOST': 'slbaoquy.mysql.pythonanywhere-services.com',
         'PORT': '3306',
 
     }
